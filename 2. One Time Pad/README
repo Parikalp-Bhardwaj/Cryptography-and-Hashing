@@ -1,4 +1,4 @@
-What is a one-time pad?
+#What is a one-time pad?
 In cryptography, a one-time pad is a system in which a randomly generated private key is used only once to encrypt a message that is then decrypted 
 by the receiver using a matching one-time pad and key.
 
