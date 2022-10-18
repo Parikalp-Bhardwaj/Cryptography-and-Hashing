@@ -1,5 +1,5 @@
 from random import randint
-
+import matplotlib.pyplot as plt
 # we need the alphabet because we convert letters into numerical values to be able to use
 # mathematical operations (note we encrypt the spaces as well)
 ALPHABET=" ABCDEFGHIJKLMNOPQRSTUVWXYZ().,"
@@ -52,6 +52,30 @@ def random_sequence(text):
         random.append(randint(0,len(ALPHABET)-1))
     return random
 
+
+def frequency_analysis(text):
+    #the text are analyse
+    text = text.upper()
+    letter_frequency = {}
+    
+    
+    for letter in ALPHABET:
+        letter_frequency[letter] = 0
+        
+    #let's consider the text we want to analyse
+    for letter in text:
+        # we keep incrementing the occurrence of the given text
+        if letter in ALPHABET:
+            letter_frequency[letter] +=1
+    
+    return letter_frequency
+            
+
+def plot_distribution(letter_frequency):
+    plt.bar(letter_frequency.keys(),letter_frequency.values())
+    plt.show()
+
+
 if __name__ =="__main__":
     message = "Rust has different behaviour than other languages. In a language where variables are always references (like Java or Python)"
     key = random_sequence(message)
@@ -61,3 +85,4 @@ if __name__ =="__main__":
     print("Encrypt Message ",cipher)
     real_text = decrypt(cipher,key)
     print("Decrypt text ",real_text)
+    plot_distribution(frequency_analysis(cipher))
